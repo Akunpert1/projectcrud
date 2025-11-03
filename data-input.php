@@ -3,7 +3,7 @@
 include_once 'config/class-master.php';
 $master = new MasterData();
 // Mengambil daftar program studi, provinsi, dan status mahasiswa
-$prodiList = $master->getProdi();
+$topingList = $master->gettoping();
 // Mengambil daftar provinsi
 $provinsiList = $master->getProvinsi();
 // Mengambil daftar status mahasiswa
@@ -36,7 +36,7 @@ if(isset($_GET['status'])){
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="mb-0">Input Mahasiswa</h3>
+								<h3 class="mb-0">Input roti</h3>
 							</div>
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
@@ -68,21 +68,21 @@ if(isset($_GET['status'])){
                                     <form action="proses/proses-input.php" method="POST">
 									    <div class="card-body">
                                             <div class="mb-3">
-                                                <label for="nim" class="form-label">Nomor Induk Mahasiswa (NIM)</label>
-                                                <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM Mahasiswa" required>
+                                                <label for="kode" class="form-label">kode roti (KODER)</label>
+                                                <input type="number" class="form-control" id="kode" name="kode" placeholder="Masukkan kode  roti" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="nama" class="form-label">Nama Lengkap</label>
-                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Lengkap Mahasiswa" required>
+                                                <label for="nama" class="form-label">Nama Toping</label>
+                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama roti lengkap" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="prodi" class="form-label">Program Studi</label>
-                                                <select class="form-select" id="prodi" name="prodi" required>
-                                                    <option value="" selected disabled>Pilih Program Studi</option>
+                                                <label for="toping" class="form-label">Toping roti</label>
+                                                <select class="form-select" id="toping" name="toping" required>
+                                                    <option value="" selected disabled>Pilih toping</option>
                                                     <?php 
                                                     // Iterasi daftar program studi dan menampilkannya sebagai opsi dalam dropdown
-                                                    foreach ($prodiList as $prodi){
-                                                        echo '<option value="'.$prodi['id'].'">'.$prodi['nama'].'</option>';
+                                                    foreach ($topingList as $toping){
+                                                        echo '<option value="'.$toping['id'].'">'.$toping['nama'].'</option>';
                                                     }
                                                     ?>
                                                 </select>

@@ -6,15 +6,15 @@ include_once 'db-config.php';
 class MasterData extends Database {
 
     // Method untuk mendapatkan daftar program studi
-    public function getProdi(){
-        $query = "SELECT * FROM tb_prodi";
+    public function gettoping(){
+        $query = "SELECT * FROM tb_toping";
         $result = $this->conn->query($query);
         $prodi = [];
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $prodi[] = [
-                    'id' => $row['kode_prodi'],
-                    'nama' => $row['nama_prodi']
+                    'id' => $row['kode_toping'],
+                    'nama' => $row['nama_toping']
                 ];
             }
         }
@@ -40,44 +40,44 @@ class MasterData extends Database {
     // Method untuk mendapatkan daftar status mahasiswa menggunakan array statis
     public function getStatus(){
         return [
-            ['id' => 1, 'nama' => 'Aktif'],
-            ['id' => 2, 'nama' => 'Tidak Aktif'],
-            ['id' => 3, 'nama' => 'Cuti'],
-            ['id' => 4, 'nama' => 'Lulus']
+            ['id' => 1, 'nama' => 'PROSES'],
+            ['id' => 2, 'nama' => 'DIKIRIM'],
+            ['id' => 3, 'nama' => 'DIANTAR'],
+            ['id' => 4, 'nama' => 'TELAH DITERIMA']
         ];
     }
 
     // Method untuk input data program studi
-    public function inputProdi($data){
-        $kodeProdi = $data['kode'];
-        $namaProdi = $data['nama'];
-        $query = "INSERT INTO tb_prodi (kode_prodi, nama_prodi) VALUES (?, ?)";
+    public function inputtoping($data){
+        $kodetoping = $data['kode'];
+        $namatoping = $data['nama'];
+        $query = "INSERT INTO tb_toping (kode_toping, nama_toping) VALUES (?, ?)";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("ss", $kodeProdi, $namaProdi);
+        $stmt->bind_param("ss", $kodetoping, $namatoping);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
     }
 
     // Method untuk mendapatkan data program studi berdasarkan kode
-    public function getUpdateProdi($id){
-        $query = "SELECT * FROM tb_prodi WHERE kode_prodi = ?";
+    public function getUpdatetoping($kode){
+        $query = "SELECT * FROM tb_toping WHERE kode_toping = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("s", $id);
+        $stmt->bind_param("s", $kode);
         $stmt->execute();
         $result = $stmt->get_result();
-        $prodi = null;
+        $toping = null;
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             $prodi = [
-                'id' => $row['kode_prodi'],
-                'nama' => $row['nama_prodi']
+                'id' => $row['kode_toping'],
+                'nama' => $row['nama_toping']
             ];
         }
         $stmt->close();
@@ -85,28 +85,28 @@ class MasterData extends Database {
     }
 
     // Method untuk mengedit data program studi
-    public function updateProdi($data){
-        $kodeProdi = $data['kode'];
-        $namaProdi = $data['nama'];
-        $query = "UPDATE tb_prodi SET nama_prodi = ? WHERE kode_prodi = ?";
+    public function updatetoping($data){
+        $kodetoping = $data['kode'];
+        $namatoping = $data['nama'];
+        $query = "UPDATE tb_toping SET nama_toping = ? WHERE kode_toping = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("ss", $namaProdi, $kodeProdi);
+        $stmt->bind_param("ss", $namatoping, $kodetoping);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
     }
 
     // Method untuk menghapus data program studi
-    public function deleteProdi($id){
-        $query = "DELETE FROM tb_prodi WHERE kode_prodi = ?";
+    public function deletetoping($kode){
+        $query = "DELETE FROM tb_toping WHERE kode_toping = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
-        $stmt->bind_param("s", $id);
+        $stmt->bind_param("s", $kode);
         $result = $stmt->execute();
         $stmt->close();
         return $result;
