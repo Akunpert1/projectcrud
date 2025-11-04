@@ -72,8 +72,8 @@ $dataroti = $roti->getAllroti();
 											<thead>
 												<tr>
 													<th>No</th>
-													<th>NIM</th>
-													<th>Nama</th>
+													<th>kode_roti</th>
+													<th>Nama_roti</th>
 													<th>toping</th>
 												    <th>jumlah</th>
 													<th>Provinsi</th>
@@ -95,11 +95,11 @@ $dataroti = $roti->getAllroti();
 															if($roti['status'] == 1){
 															    $roti['status'] = '<span class="badge bg-success">PROSES</span>';
 															} elseif($roti['status'] == 2){
-															    $mahasiswa['status'] = '<span class="badge bg-danger">DIKIRIM</span>';
-															} elseif($mahasiswa['status'] == 3){
-															    $mahasiswa['status'] = '<span class="badge bg-warning text-dark">DIANTAR</span>';
-															} elseif($mahasiswa['status'] == 4){
-															    $mahasiswa['status'] = '<span class="badge bg-primary">TELAH DITERIMA</span>';
+															    $roti['status'] = '<span class="badge bg-danger">DIKIRIM</span>';
+															} elseif($roti['status'] == 3){
+															    $roti['status'] = '<span class="badge bg-warning text-dark">DIANTAR</span>';
+															} elseif($roti['status'] == 4){
+															    $roti['status'] = '<span class="badge bg-primary">TELAH DITERIMA</span>';
 															} 
 															echo '<tr class="align-middle">
 																<td>'.($index + 1).'</td>

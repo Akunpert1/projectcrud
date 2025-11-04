@@ -47,10 +47,21 @@ class MasterData extends Database {
         ];
     }
 
-    // Method untuk input data program studi
+    // ✅ Method untuk input data toping (sudah dicegah duplicate)
     public function inputtoping($data){
         $kodetoping = $data['kode'];
         $namatoping = $data['nama'];
+
+        // Cek apakah kode sudah ada
+        $cek = $this->conn->prepare("SELECT kode_toping FROM tb_toping WHERE kode_toping = ?");
+        $cek->bind_param("s", $kodetoping);
+        $cek->execute();
+        $hasil = $cek->get_result();
+
+        if($hasil->num_rows > 0){
+            return "duplicate"; // kode sudah ada → hentikan
+        }
+
         $query = "INSERT INTO tb_toping (kode_toping, nama_toping) VALUES (?, ?)";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
@@ -62,7 +73,7 @@ class MasterData extends Database {
         return $result;
     }
 
-    // Method untuk mendapatkan data program studi berdasarkan kode
+    // Method untuk mendapatkan data toping berdasarkan kode
     public function getUpdatetoping($kode){
         $query = "SELECT * FROM tb_toping WHERE kode_toping = ?";
         $stmt = $this->conn->prepare($query);
@@ -72,7 +83,7 @@ class MasterData extends Database {
         $stmt->bind_param("s", $kode);
         $stmt->execute();
         $result = $stmt->get_result();
-        $toping = null;
+        $prodi = null;
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
             $prodi = [
@@ -84,7 +95,7 @@ class MasterData extends Database {
         return $prodi;
     }
 
-    // Method untuk mengedit data program studi
+    // Method untuk mengedit data toping
     public function updatetoping($data){
         $kodetoping = $data['kode'];
         $namatoping = $data['nama'];
@@ -99,7 +110,7 @@ class MasterData extends Database {
         return $result;
     }
 
-    // Method untuk menghapus data program studi
+    // Method untuk menghapus data toping
     public function deletetoping($kode){
         $query = "DELETE FROM tb_toping WHERE kode_toping = ?";
         $stmt = $this->conn->prepare($query);
@@ -112,7 +123,7 @@ class MasterData extends Database {
         return $result;
     }
 
-    // Method untuk input data provinsi
+    // Method input provinsi
     public function inputProvinsi($data){
         $namaProvinsi = $data['nama'];
         $query = "INSERT INTO tb_provinsi (nama_provinsi) VALUES (?)";
@@ -126,7 +137,7 @@ class MasterData extends Database {
         return $result;
     }
 
-    // Method untuk mendapatkan data provinsi berdasarkan id
+    // Method dapat provinsi berdasarkan id
     public function getUpdateProvinsi($id){
         $query = "SELECT * FROM tb_provinsi WHERE id_provinsi = ?";
         $stmt = $this->conn->prepare($query);
@@ -148,7 +159,7 @@ class MasterData extends Database {
         return $provinsi;
     }
 
-    // Method untuk mengedit data provinsi
+    // Update provinsi
     public function updateProvinsi($data){
         $idProvinsi = $data['id'];
         $namaProvinsi = $data['nama'];
@@ -163,7 +174,7 @@ class MasterData extends Database {
         return $result;
     }
 
-    // Method untuk menghapus data provinsi
+    // Hapus provinsi
     public function deleteProvinsi($id){
         $query = "DELETE FROM tb_provinsi WHERE id_provinsi = ?";
         $stmt = $this->conn->prepare($query);

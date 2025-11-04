@@ -23,7 +23,7 @@ if($_GET['aksi'] == 'inputtoping'){
 } elseif($_GET['aksi'] == 'updatetoping'){
     // Mengambil data prodi dari form edit menggunakan metode POST dan menyimpannya dalam array
     $datatoping = [
-        'id' => $_POST['id'],
+       
         'kode' => $_POST['kode'],
         'nama' => $_POST['nama']
     ];

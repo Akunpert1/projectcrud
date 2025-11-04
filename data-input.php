@@ -88,6 +88,10 @@ if(isset($_GET['status'])){
                                                 </select>
                                             </div>
                                             <div class="mb-3">
+                                                <label for="jumlah" class="form-label">Jumlah</label>
+                                                <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah box roti" required>
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="alamat" class="form-label">Alamat</label>
                                                 <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat Lengkap Sesuai KTP" required></textarea>
                                             </div>

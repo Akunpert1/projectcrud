@@ -71,17 +71,17 @@ if(isset($_GET['status'])){
 									    <div class="card-body">
                                             <input type="hidden" name="id" value="<?php echo $dataroti['id']; ?>">
                                             <div class="mb-3">
-                                                <label for="nim" class="form-label">Kode roti (koderoti)</label>
-                                                <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan NIM Mahasiswa" value="<?php echo $dataMahasiswa['nim']; ?>" required>
+                                                <label for="kode" class="form-label">Kode roti (koderoti)</label>
+                                                <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan kode roti" value="<?php echo $dataroti['kode']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Nama Lengkap</label>
-                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Lengkap Mahasiswa" value="<?php echo $dataMahasiswa['nama']; ?>" required>
+                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan roti" value="<?php echo $dataroti['nama']; ?>" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="toping" class="form-label">Program Studi</label>
+                                                <label for="toping" class="form-label">Toping</label>
                                                 <select class="form-select" id="toping" name="toping" required>
-                                                    <option value="" selected disabled>Pilih Program Studi</option>
+                                                    <option value="" selected disabled>Pilih toping</option>
                                                     <?php 
                                                     // Iterasi daftar program studi dan menandai yang sesuai dengan data mahasiswa yang dipilih
                                                     foreach ($topingList as $toping){
@@ -100,7 +100,7 @@ if(isset($_GET['status'])){
                                             </div>
                                             <div class="mb-3">
                                                 <label for="alamat" class="form-label">Alamat</label>
-                                                <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat Lengkap Sesuai KTP" required><?php echo $dataMahasiswa['alamat']; ?></textarea>
+                                                <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat Lengkap Sesuai KTP" required><?php echo $dataroti['alamat']; ?></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="provinsi" class="form-label">Provinsi</label>
@@ -112,9 +112,9 @@ if(isset($_GET['status'])){
                                                         // Menginisialisasi variabel kosong untuk menandai opsi yang dipilih
                                                         $selectedProvinsi = "";
                                                         // Mengecek apakah provinsi saat ini sesuai dengan data mahasiswa
-                                                        if($dataMahasiswa['provinsi'] == $provinsi['id']){
+                                                        if($dataroti['provinsi'] == $provinsi['id']){
                                                             // Jika sesuai, tandai sebagai opsi yang dipilih
-                                                            $selectedProvinsi = "selected";
+                                                            $selectedroti = "selected";
                                                         }
                                                         // Menampilkan opsi provinsi dengan penanda yang sesuai
                                                         echo '<option value="'.$provinsi['id'].'" '.$selectedProvinsi.'>'.$provinsi['nama'].'</option>';
@@ -124,11 +124,11 @@ if(isset($_GET['status'])){
                                             </div>
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email Valid dan Benar" value="<?php echo $dataMahasiswa['email']; ?>" required>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email Valid dan Benar" value="<?php echo $dataroti['email']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="telp" class="form-label">Nomor Telepon</label>
-                                                <input type="tel" class="form-control" id="telp" name="telp" placeholder="Masukkan Nomor Telpon/HP" value="<?php echo $dataMahasiswa['telp']; ?>" pattern="[0-9+\-\s()]{6,20}" required>
+                                                <input type="tel" class="form-control" id="telp" name="telp" placeholder="Masukkan Nomor Telpon/HP" value="<?php echo $dataroti['telp']; ?>" pattern="[0-9+\-\s()]{6,20}" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="status" class="form-label">Status</label>

@@ -3,9 +3,9 @@
 // Memasukkan file class-mahasiswa.php untuk mengakses class Mahasiswa
 include '../config/class-roti.php';
 // Membuat objek dari class Mahasiswa
-$mahasiswa = new Mahasiswa();
+$roti = new roti();
 // Mengambil data mahasiswa dari form input menggunakan metode POST dan menyimpannya dalam array
-$dataMahasiswa = [
+$dataroti = [
     'kode' => $_POST['kode'],
     'nama' => $_POST['nama'],
     'toping' => $_POST['toping'],

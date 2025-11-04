@@ -1,12 +1,20 @@
 <?php 
 
-// Silakan lihat komentar di file data-edit.php untuk penjelasan kode ini, karena struktur dan logikanya serupa.
 include_once 'config/class-master.php';
 $master = new MasterData();
-$datatoping = $master->getUpdatetoping($_GET['kode']);
+
+// Cek apakah 'kode' ada di URL
+if(isset($_GET['kode'])){
+    $datatoping = $master->getUpdatetoping($_GET['kode']);
+} else {
+    // Jika tidak ada kode, kembali ke halaman list
+    header("Location: master-toping-list.php");
+    exit;
+}
+
 if(isset($_GET['status'])){
     if($_GET['status'] == 'failed'){
-        echo "<script>alert('Gagal mengubah data  toping. Silakan coba lagi.');</script>";
+        echo "<script>alert('Gagal mengubah data toping. Silakan coba lagi.');</script>";
     }
 }
 
@@ -31,12 +39,12 @@ if(isset($_GET['status'])){
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-sm-6">
-								<h3 class="mb-0">Edit toping</h3>
+								<h3 class="mb-0">Edit Toping</h3>
 							</div>
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-end">
 									<li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Edit toping</li>
+									<li class="breadcrumb-item active" aria-current="page">Edit Toping</li>
 								</ol>
 							</div>
 						</div>
@@ -49,7 +57,7 @@ if(isset($_GET['status'])){
 							<div class="col-12">
 								<div class="card">
 									<div class="card-header">
-										<h3 class="card-title">Formulir data toping</h3>
+										<h3 class="card-title">Formulir Data Toping</h3>
 										<div class="card-tools">
 											<button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
 												<i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -60,22 +68,27 @@ if(isset($_GET['status'])){
 											</button>
 										</div>
 									</div>
-                                    <form action="proses/proses-prodi.php?aksi=updateprodi" method="POST">
+
+									<!-- Perubahan action diarahkan ke proses toping -->
+                                    <form action="proses/proses-toping.php?aksi=updatetoping" method="POST">
 									    <div class="card-body">
                                             <div class="mb-3">
-                                                <label for="nama" class="form-label">Kode toping</label>
-                                                <input type="text" class="form-control-plaintext" id="kode" name="kode" placeholder="Masukkan Kode  toping" value="<?php echo $datatoping['kode']; ?>" required readonly>
+                                                <label for="kode" class="form-label">Kode Toping</label>
+                                                <input type="text" class="form-control-plaintext" id="kode" name="kode" value="<?php echo $datatoping['kode']; ?>" readonly>
                                             </div>
+
 											<div class="mb-3">
-												<label for="nama" class="form-label">Nama toping</label>
-												<input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama toping" value="<?php echo $datatoping['nama']; ?>" required>
+												<label for="nama" class="form-label">Nama Toping</label>
+												<input type="text" class="form-control" id="nama" name="nama" value="<?php echo $datatoping['nama']; ?>" required>
 											</div>
                                         </div>
+
 									    <div class="card-footer">
                                             <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='master-toping-list.php'">Batal</button>
                                             <button type="submit" class="btn btn-warning float-end">Update Data</button>
                                         </div>
                                     </form>
+
 								</div>
 							</div>
 						</div>
