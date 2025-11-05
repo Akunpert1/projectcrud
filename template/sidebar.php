@@ -12,14 +12,15 @@
                 <li class="nav-header">APLIKASI</li>
                 <li class="nav-item">
                     <a href="index.php" class="nav-link">
-                        <i class="nav-icon bi bi-house-door-fill"></i>
+                        <i class="nav-icon bi bi-house-check"></i>
+
                         <p>Beranda</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="data-input.php" class="nav-link">
-                        <i class="nav-icon bi bi-clipboard-data-fill"></i>
-                        <p>Input Roti</p>
+                        <i class="nav-icon bi bi-clipboard-heart-fill"></i>
+                         <p>Input Roti</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -37,13 +38,13 @@
                 <li class="nav-header">MASTER DATA</li>
                 <li class="nav-item">
                     <a href="master-prodi-list.php" class="nav-link">
-                        <i class="nav-icon bi bi-building"></i>
+                        <i class="bi bi-card-checklist"></i>
                         <p>Toping Eklusif</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="master-provinsi-list.php" class="nav-link">
-                        <i class="nav-icon bi bi-briefcase-fill"></i>
+                        <i class="bi bi-geo-fill"></i>
                         <p>Provinsi</p>
                     </a>
                 </li>
