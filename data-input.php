@@ -72,7 +72,7 @@ if(isset($_GET['status'])){
                                                 <input type="number" class="form-control" id="kode" name="kode" placeholder="Masukkan kode  roti" required>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="nama" class="form-label">Nama Toping</label>
+                                                <label for="nama" class="form-label">Nama roti</label>
                                                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama roti lengkap" required>
                                             </div>
                                             <div class="mb-3">
@@ -88,7 +88,7 @@ if(isset($_GET['status'])){
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="jumlah" class="form-label">Jumlah</label>
+                                                <label for="jumlah" class="form-label">Jumlah Box</label>
                                                 <input type="number" class="form-control" id="jumlah" name="jumlah" placeholder="Masukkan jumlah box roti" required>
                                             </div>
                                             <div class="mb-3">

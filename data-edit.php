@@ -82,7 +82,7 @@ if(isset($_GET['status'])){
                                                 <label for="toping" class="form-label">Toping</label>
                                                 <select class="form-select" id="toping" name="toping" required>
                                                     <option value="" selected disabled>Pilih toping</option>
-                                                    <?php 
+                                                     <?php 
                                                     // Iterasi daftar program studi dan menandai yang sesuai dengan data mahasiswa yang dipilih
                                                     foreach ($topingList as $toping){
                                                         // Menginisialisasi variabel kosong untuk menandai opsi yang dipilih
