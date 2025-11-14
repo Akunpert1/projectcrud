@@ -9,16 +9,16 @@ class MasterData extends Database {
     public function gettoping(){
         $query = "SELECT * FROM tb_toping";
         $result = $this->conn->query($query);
-        $prodi = [];
+        $toping = [];
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $prodi[] = [
-                    'id' => $row['kode_toping'],
+                $toping[] = [
+                    'kode' => $row['kode_toping'],
                     'nama' => $row['nama_toping']
                 ];
             }
         }
-        return $prodi;
+        return $toping;
     }
 
     // Method untuk mendapatkan daftar provinsi
@@ -83,16 +83,16 @@ class MasterData extends Database {
         $stmt->bind_param("s", $kode);
         $stmt->execute();
         $result = $stmt->get_result();
-        $prodi = null;
+        $toping = null;
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
-            $prodi = [
+            $toping = [
                 'id' => $row['kode_toping'],
                 'nama' => $row['nama_toping']
             ];
         }
         $stmt->close();
-        return $prodi;
+        return $toping;
     }
 
     // Method untuk mengedit data toping

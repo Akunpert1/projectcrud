@@ -72,7 +72,7 @@ if(isset($_GET['status'])){
                                             <input type="hidden" name="id" value="<?php echo $dataroti['id']; ?>">
                                             <div class="mb-3">
                                                 <label for="kode" class="form-label">Kode roti (koderoti)</label>
-                                                <input type="number" class="form-control" id="nim" name="nim" placeholder="Masukkan kode roti" value="<?php echo $dataroti['kode']; ?>" required>
+                                                <input type="number" class="form-control" id="kode" name="kode" placeholder="Masukkan kode roti" value="<?php echo $dataroti['kode']; ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Nama Lengkap</label>
@@ -114,7 +114,7 @@ if(isset($_GET['status'])){
                                                         // Mengecek apakah provinsi saat ini sesuai dengan data mahasiswa
                                                         if($dataroti['provinsi'] == $provinsi['id']){
                                                             // Jika sesuai, tandai sebagai opsi yang dipilih
-                                                            $selectedroti = "selected";
+                                                            $selectedProvinsi = "selected";
                                                         }
                                                         // Menampilkan opsi provinsi dengan penanda yang sesuai
                                                         echo '<option value="'.$provinsi['id'].'" '.$selectedProvinsi.'>'.$provinsi['nama'].'</option>';

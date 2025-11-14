@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `tb_mahasiswa` (
   `id_mhs` int(11) NOT NULL AUTO_INCREMENT,
   `nim_mhs` char(12) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `nama_mhs` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `prodi_mhs` char(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `toping_mhs` char(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `provinsi` mediumint(3) NOT NULL,
   `email` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -36,23 +36,20 @@ CREATE TABLE IF NOT EXISTS `tb_mahasiswa` (
 -- Dumping data for table db_simplecrud.tb_mahasiswa: ~0 rows (approximately)
 
 -- Dumping structure for table db_simplecrud.tb_prodi
-CREATE TABLE IF NOT EXISTS `tb_prodi` (
-  `kode_prodi` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_prodi` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`kode_prodi`)
+CREATE TABLE IF NOT EXISTS `tb_toping` (
+  `kode_toping` char(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_toping` char(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`kode_toping`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Dumping data for table db_simplecrud.tb_prodi: ~9 rows (approximately)
-INSERT INTO `tb_prodi` (`kode_prodi`, `nama_prodi`) VALUES
-	('ARS', 'Arsitek'),
-	('BD', 'Bisnis Digital'),
-	('DI', 'Desain Interior'),
-	('DKV', 'Desain Komunikasi Visual'),
-	('DM', 'Desain Mode'),
-	('MBD', 'Magister Bisnis Digital'),
-	('MDS', 'Magister Desain'),
-	('MR', 'Manajemen Ritel'),
-	('STI', 'Sistem dan Teknologi Informasi');
+INSERT INTO `tb_toping` (`kode_toping`, `nama_toping`) VALUES
+	('BLUE', 'BLUEBERY')
+	('KJ', 'KEJU'),
+	('MCH', 'MACHA'),
+	('ORG', 'ORIGINAL'),
+	('SS', 'SUSU'),
+	('STR', 'STOWBERY');
 
 -- Dumping structure for table db_simplecrud.tb_provinsi
 CREATE TABLE IF NOT EXISTS `tb_provinsi` (

@@ -103,7 +103,10 @@ $dataroti = $roti->getAllroti();
 															} 
 															echo '<tr class="align-middle">
 																<td>'.($index + 1).'</td>
-																<td>'.$roti['kode'].'</td>
+
+																<!-- Perbaikan kode_roti -->
+																<td>'.($roti['kode'] ?? $roti['kode_roti'] ?? $roti['kodeRoti'] ?? '-').'</td>
+
 																<td>'.$roti['nama'].'</td>
 																<td>'.$roti['toping'].'</td>
 																<td>'.$roti['jumlah'].'</td>

@@ -61,7 +61,7 @@ if(isset($_GET['status'])){
 									    <div class="card-body">
                                             <div class="mb-3">
                                                 <label for="nama" class="form-label">Kode toping</label>
-                                                <input type="text" class="form-control" id="kode" name="kode" placeholder="Masukkan Kode toping" required>
+                                                <input type="text" class="form-control" id="kode_toping" name="kode_toping" placeholder="Masukkan Kode toping" required>
                                             </div>
 											<div class="mb-3">
 												<label for="nama" class="form-label">Nama toping</label>
@@ -69,7 +69,7 @@ if(isset($_GET['status'])){
 											</div>
                                         </div>
 									    <div class="card-footer">
-                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='master-prodi-list.php'">Batal</button>
+                                            <button type="button" class="btn btn-danger me-2 float-start" onclick="window.location.href='master-toping-list.php'">Batal</button>
                                             <button type="reset" class="btn btn-secondary me-2 float-start">Reset</button>
                                             <button type="submit" class="btn btn-primary float-end">Submit</button>
                                         </div>

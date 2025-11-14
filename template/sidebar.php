@@ -37,7 +37,7 @@
                 </li>
                 <li class="nav-header">MASTER DATA</li>
                 <li class="nav-item">
-                    <a href="master-prodi-list.php" class="nav-link">
+                    <a href="master-toping-list.php" class="nav-link">
                         <i class="bi bi-card-checklist"></i>
                         <p>Toping Eklusif</p>
                     </a>

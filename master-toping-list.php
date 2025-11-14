@@ -16,7 +16,7 @@ if(isset($_GET['status'])){
 }
 
 // pastikan selalu array
-$datatoping = $master->gettoping() ?? [];
+$dataToping = $master->gettoping();
 
 ?>
 <!doctype html>
@@ -71,12 +71,12 @@ $datatoping = $master->gettoping() ?? [];
 											</thead>
 											<tbody>
 												<?php
-													if(count($datatoping) == 0){
+													if(count($dataToping) == 0){
 													    echo '<tr class="align-middle">
 															<td colspan="4" class="text-center">Tidak ada data toping.</td>
 														</tr>';
 													} else {
-														foreach ($datatoping as $index => $toping){
+														foreach ($dataToping as $index => $toping){
 
 															// perbaikan key array aman
 															$kode = $toping['kode'] ?? $toping['kode_toping'] ?? '-';
