@@ -21,7 +21,7 @@ USE `db_simplecrud`;
 
 -- Dumping structure for table db_simplecrud.tb_mahasiswa
 CREATE TABLE IF NOT EXISTS `tb_mahasiswa` (
-  `id_mhs` int(11) NOT NULL AUTO_INCREMENT,
+  `id_mhs int(11) NOT NULL AUTO_INCREMENT,
   `nim_mhs` char(12) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `nama_mhs` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `toping_mhs` char(10) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',

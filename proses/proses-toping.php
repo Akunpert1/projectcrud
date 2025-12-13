@@ -8,7 +8,7 @@ $master = new MasterData();
 if($_GET['aksi'] == 'inputtoping'){
     // Mengambil data prodi dari form input menggunakan metode POST dan menyimpannya dalam array
     $datatoping = [
-        'kode' => $_POST['kode'],
+        'kode' => $_POST['kode_toping'],
         'nama' => $_POST['nama']
     ];
     // Memanggil method inputProdi untuk memasukkan data prodi dengan parameter array $dataProdi
@@ -24,7 +24,7 @@ if($_GET['aksi'] == 'inputtoping'){
     // Mengambil data prodi dari form edit menggunakan metode POST dan menyimpannya dalam array
     $datatoping = [
        
-        'kode' => $_POST['kode'],
+        'kode' => $_POST['kode_toping'],
         'nama' => $_POST['nama']
     ];
     // Memanggil method updateProdi untuk mengupdate data prodi dengan parameter array $dataProdi
@@ -34,13 +34,13 @@ if($_GET['aksi'] == 'inputtoping'){
         header("Location: ../master-toping-list.php?status=editsuccess");
     } else {
         // Jika gagal, redirect ke halaman master-prodi-edit.php dengan status failed dan membawa id prodi
-        header("Location: ../master-toping-edit.php?id=".$datatoping['kode']."&status=failed");
+        header("Location: ../master-toping-edit.php?id=".$datatoping['kode_toping']."&status=failed");
     }
 } elseif($_GET['aksi'] == 'deletetoping'){
     // Mengambil id prodi dari parameter GET
     $id = $_GET['kode'];
     // Memanggil method deleteProdi untuk menghapus data prodi berdasarkan id
-    $delete = $master->deletetoping($kode);
+    $delete = $master->deletetoping($kode_toping);
     if($delete){
         // Jika berhasil, redirect ke halaman master-prodi-list.php dengan status deletesuccess
         header("Location: ../master-toping-list.php?status=deletesuccess");

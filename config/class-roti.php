@@ -22,7 +22,7 @@ class roti extends Database {
         if($provinsi === '' || $provinsi === null){ $provinsi = 0; }
         if($status === '' || $status === null){ $status = 0; }
 
-        $query = "INSERT INTO tb_roti (kode_roti, nama_roti, toping_roti, jumlah, alamat, provinsi, email, telp, status_roti) 
+        $query = "INSERT INTO tb_roti (kode_roti, nama_roti, toping_roti, jumlah_box, alamat, provinsi, email, telp, status_roti) 
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
@@ -38,7 +38,7 @@ class roti extends Database {
 
     // Method untuk mengambil semua data roti
     public function getAllroti(){
-        $query = "SELECT id_roti, kode_roti, nama_roti, toping_roti, jumlah, nama_provinsi, alamat, email, telp, status_roti 
+        $query = "SELECT kode_roti, nama_roti, toping_roti, jumlah_box, nama_provinsi, alamat, email, telp, status_roti 
                   FROM tb_roti
                   JOIN tb_toping ON toping_roti = kode_toping
                   JOIN tb_provinsi ON provinsi = id_provinsi";
@@ -48,11 +48,10 @@ class roti extends Database {
         if($result && $result->num_rows > 0){
             while($row = $result->fetch_assoc()) {
                 $roti[] = [
-                    'id' => $row['id_roti'],
                     'kode' => $row['kode_roti'],
                     'nama' => $row['nama_roti'],
                     'toping' => $row['toping_roti'],
-                    'jumlah' => $row['jumlah'],
+                    'jumlah' => $row['jumlah_box'],
                     'provinsi' => $row['nama_provinsi'],
                     'alamat' => $row['alamat'],
                     'email' => $row['email'],
@@ -67,7 +66,7 @@ class roti extends Database {
 
     // Method untuk mengambil data roti berdasarkan ID
     public function getUpdateroti($id){
-        $query = "SELECT * FROM tb_roti WHERE id_roti = ?";
+        $query = "SELECT * FROM tb_roti WHERE kode_roti = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
@@ -80,11 +79,10 @@ class roti extends Database {
         if($result && $result->num_rows > 0){
             $row = $result->fetch_assoc();
             $data = [
-                'id' => $row['id_roti'],
                 'kode' => $row['kode_roti'],
                 'nama' => $row['nama_roti'],
                 'toping' => $row['toping_roti'],
-                'jumlah' => $row['jumlah'],
+                'jumlah' => $row['jumlah_box'],
                 'alamat' => $row['alamat'],
                 'provinsi' => $row['provinsi'],
                 'email' => $row['email'],
@@ -99,11 +97,10 @@ class roti extends Database {
 
     // Method untuk mengedit data roti
     public function editroti($data){
-        $id       = $data['id'];
         $kode     = $data['kode'];
         $nama     = $data['nama'];
         $toping   = $data['toping'];
-        $jumlah   = $data['jumlah'];
+        $jumlah   = $data['jumlah_box'];
         $alamat   = $data['alamat'];
         $provinsi = $data['provinsi'];
         $email    = $data['email'];
@@ -115,14 +112,14 @@ class roti extends Database {
         if($provinsi === '' || $provinsi === null){ $provinsi = 0; }
         if($status === '' || $status === null){ $status = 0; }
 
-        $query = "UPDATE tb_roti SET kode_roti = ?, nama_roti = ?, toping_roti = ?, jumlah = ?, alamat = ?, provinsi = ?, email = ?, telp = ?, status_roti = ? 
+        $query = "UPDATE tb_roti SET kode_roti = ?, nama_roti = ?, toping_roti = ?, jumlah_box = ?, alamat = ?, provinsi = ?, email = ?, telp = ?, status_roti = ? 
                   WHERE id_roti = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
         }
 
-        $stmt->bind_param("ssssssssss", $kode, $nama, $toping, $jumlah, $alamat, $provinsi, $email, $telp, $status, $id);
+        $stmt->bind_param("sssssssss", $kode, $nama, $toping, $jumlah, $alamat, $provinsi, $email, $telp, $status);
         $result = $stmt->execute();
         $stmt->close();
 
@@ -131,7 +128,7 @@ class roti extends Database {
 
     // Method untuk menghapus data roti
     public function deleteroti($id){
-        $query = "DELETE FROM tb_roti WHERE id_roti = ?";
+        $query = "DELETE FROM tb_roti WHERE kode_roti = ?";
         $stmt = $this->conn->prepare($query);
         if(!$stmt){
             return false;
@@ -147,7 +144,7 @@ class roti extends Database {
     // Method untuk mencari data roti berdasarkan kata kunci
     public function searchroti($kataKunci){
         $likeQuery = "%".$kataKunci."%";
-        $query = "SELECT id_roti, kode_roti, nama_roti, toping_roti, jumlah, nama_provinsi, alamat, email, telp, status_roti
+        $query = "SELECT kode_roti, nama_roti, toping_roti, jumlah_box, nama_provinsi, alamat, email, telp, status_roti
                   FROM tb_roti
                   JOIN tb_toping ON toping_roti = kode_toping
                   JOIN tb_provinsi ON provinsi = id_provinsi
@@ -165,11 +162,10 @@ class roti extends Database {
         if($result && $result->num_rows > 0){
             while($row = $result->fetch_assoc()) {
                 $roti[] = [
-                    'id' => $row['id_roti'],
                     'kode' => $row['kode_roti'],
                     'nama' => $row['nama_roti'],
                     'toping' => $row['toping_roti'],
-                    'jumlah' => $row['jumlah'],
+                    'jumlah' => $row['jumlah_box'],
                     'provinsi' => $row['nama_provinsi'],
                     'alamat' => $row['alamat'],
                     'email' => $row['email'],
